@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'dart:math';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
-import '../components/baseComponent.dart';
+import '../components/base_component.dart';
 import 'package:flutter/gestures.dart';
 
 class FlameGame extends Game {

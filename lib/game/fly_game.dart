@@ -1,4 +1,4 @@
-import '../components/fly.dart';
+import '../components/fly_component.dart';
 import 'flame_game.dart';
 
 class FlyGame extends FlameGame {

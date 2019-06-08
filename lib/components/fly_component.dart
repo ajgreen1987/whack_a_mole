@@ -1,5 +1,5 @@
 // TODO: change to import 'baseComponent.dart'
-import 'package:whack_a_mole/components/baseComponent.dart';
+import 'base_component.dart';
 import 'dart:ui';
 
 class Fly extends BaseComponent {
