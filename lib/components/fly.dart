@@ -1,3 +1,4 @@
+// TODO: change to import 'baseComponent.dart'
 import 'package:whack_a_mole/components/baseComponent.dart';
 import 'dart:ui';
 

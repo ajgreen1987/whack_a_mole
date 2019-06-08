@@ -28,6 +28,7 @@ class FlameGame extends Game {
     components.forEach((BaseComponent component) => component.render(canvas));
   }
 
+  // Base renders a random value, subclass can override
   void renderBackground(Canvas canvas) {
     Rect bgRect = Rect.fromLTWH(0, 0, screenSize.width, screenSize.height);
     Paint bgPaint = Paint();
@@ -56,9 +57,6 @@ class FlameGame extends Game {
     });
   }
 
-  void spawnComponent() {
-    double x = random.nextDouble() * (screenSize.width - tileSize);
-    double y = random.nextDouble() * (screenSize.height - tileSize);
-    components.add(BaseComponent(this, x, y));
-  }
+  //TODO: How to make these methods required in DART
+  void spawnComponent() {}
 }

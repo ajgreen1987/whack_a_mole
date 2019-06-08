@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flame/util.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/gestures.dart';
-import 'game/flame_game.dart';
+import 'game/fly_game.dart';
 
 Future main() async {
 
@@ -12,7 +12,7 @@ Future main() async {
   await flameUtil.setOrientation(DeviceOrientation.portraitUp);
 
   // Create the Game and run the app
-  FlameGame game = FlameGame();
+  FlyGame game = FlyGame();
   runApp(game.widget);
   
   TapGestureRecognizer tapGestureRecognizer = TapGestureRecognizer();
