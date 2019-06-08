@@ -22,11 +22,10 @@ class BaseComponent {
     // Is dead logic belongs in the subclass
     if(isDead){
       componentRect = componentRect.translate(0, game.tileSize*12*t);
-      if(componentRect.top > game.screenSize.height)
-      {
-        // generalize into a method that checks the objets rect against all sides of the screen
-        isOffScreen = true;
-      }
+
+      // generalize into a method that checks the objets rect against all sides of the screen
+      isOffScreen = checkOffScreen();
+      print("Are we off the screen yet?:" + isOffScreen.toString());
     }
   }
 
@@ -35,5 +34,11 @@ class BaseComponent {
     componentPaint.color = Color(0xffff4757);
     isDead = true;
     game.spawnComponent();
+  }
+
+  
+  bool checkOffScreen(){
+    Rect bgRect = Rect.fromLTWH(0, 0, game.screenSize.width, game.screenSize.height);
+    return !bgRect.contains(componentRect.center);
   }
 }
