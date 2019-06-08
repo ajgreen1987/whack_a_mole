@@ -10,12 +10,12 @@ class Fly extends BaseComponent {
     if (isDead) {
       componentRect = componentRect.translate(0, game.tileSize * 12 * t);
     }
+    super.update(t);
   }
 
   // Tap logic belongs in subclass
   void onTapDown() {
     componentPaint.color = Color(0xffff4757);
     isDead = true;
-    game.spawnComponent();
   }
 }

@@ -7,4 +7,12 @@ class FlyGame extends FlameGame {
     double y = random.nextDouble() * (screenSize.height - tileSize);
     components.add(Fly(this, x, y));
   }
+
+  void update(double t) {
+    // This could be whatever logic we want. Time based, or similar.
+    if (components.length < 1) {
+      spawnComponent();
+    }
+    super.update(t);
+  }
 }
