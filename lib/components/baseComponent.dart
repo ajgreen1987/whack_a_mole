@@ -1,5 +1,5 @@
 import 'dart:ui';
-import '../flame_game.dart';
+import '../game/flame_game.dart';
 
 class BaseComponent {
   Rect componentRect;

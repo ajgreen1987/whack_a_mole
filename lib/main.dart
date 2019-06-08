@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flame/util.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/gestures.dart';
-import './flame_game.dart';
+import 'game/flame_game.dart';
 
 Future main() async {
 
