@@ -19,24 +19,18 @@ class BaseComponent {
   }
 
   void update(double t) {
-    // Is dead logic belongs in the subclass
+    // Is dead logic belongs in the subclass - 
+    // An optional paramter could be added to toggle the isDead -> isOffScreen requirement?
     if(isDead){
-      componentRect = componentRect.translate(0, game.tileSize*12*t);
-
       // generalize into a method that checks the objets rect against all sides of the screen
       isOffScreen = checkOffScreen();
       print("Are we off the screen yet?:" + isOffScreen.toString());
     }
   }
 
-  // Tap logic belongs in subclass
-  void onTapDown(){
-    componentPaint.color = Color(0xffff4757);
-    isDead = true;
-    game.spawnComponent();
-  }
+  // Create a tappable subclass to handle taps?
+  void onTapDown(){ }
 
-  
   bool checkOffScreen(){
     Rect bgRect = Rect.fromLTWH(0, 0, game.screenSize.width, game.screenSize.height);
     return !bgRect.contains(componentRect.center);
