@@ -39,6 +39,9 @@ class FlameGame extends Game {
   @override
   void update(double t) {
     components.forEach((BaseComponent component) => component.update(t));
+    // TODO: Seeing exception:
+    // flutter: Another exception was thrown: Concurrent modification during iteration: Instance(length:14) of '_GrowableList'.
+    // Need a way to removeWhere only if not updating?
     components.removeWhere((BaseComponent component) => component.isOffScreen);
   }
 
