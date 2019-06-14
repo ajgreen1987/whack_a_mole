@@ -27,17 +27,9 @@ class Fly extends BaseComponent {
     if (isDead) {
       componentRect = componentRect.translate(0, game.tileSize * 24 * t);
     } else {
-      double stepDistance = speed * t;
-      Offset toTarget =
-          targetLocation - Offset(componentRect.left, componentRect.top);
-      if (stepDistance < toTarget.distance) {
-        Offset stepToTarget =
-            Offset.fromDirection(toTarget.direction, stepDistance);
-        componentRect = componentRect.shift(stepToTarget);
-      } else {
-        componentRect = componentRect.shift(toTarget);
-        setTargetLocation();
-      }
+      // Maybe create methods in the base (move & animate?)
+      flyAround(t);
+      animate(t);
     }
     super.update(t);
   }
@@ -48,11 +40,32 @@ class Fly extends BaseComponent {
     isDead = true;
   }
 
+  void flyAround(t) {
+    double stepDistance = speed * t;
+    Offset toTarget =
+        targetLocation - Offset(componentRect.left, componentRect.top);
+    if (stepDistance < toTarget.distance) {
+      Offset stepToTarget =
+          Offset.fromDirection(toTarget.direction, stepDistance);
+      componentRect = componentRect.shift(stepToTarget);
+    } else {
+      componentRect = componentRect.shift(toTarget);
+      setTargetLocation();
+    }
+  }
+
   void setTargetLocation() {
     double x = game.random.nextDouble() *
         (game.screenSize.width - (game.tileSize * 2.025));
     double y = game.random.nextDouble() *
         (game.screenSize.height - (game.tileSize * 2.025));
     targetLocation = Offset(x, y);
+  }
+
+  void animate(t) {
+    flyingSpriteIndex += 30 * t;
+    if (flyingSpriteIndex >= 2) {
+      flyingSpriteIndex -= 2;
+    }
   }
 }
