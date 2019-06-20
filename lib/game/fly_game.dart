@@ -1,5 +1,6 @@
 import 'flame_game.dart';
 import 'dart:ui';
+import '../views/view.dart';
 import '../components/backyard_component.dart';
 import '../components/fly_component.dart';
 import '../components/house_fly_component.dart';
@@ -7,19 +8,30 @@ import '../components/drooler_fly_component.dart';
 import '../components/agile_fly_component.dart';
 import '../components/hungry_fly_component.dart';
 import '../components/macho_fly_component.dart';
+import '../views/home_view.dart';
 
 class FlyGame extends FlameGame {
   Rect bgRect;
   Backyard bgSprite;
+  View activeView = View.home;
+  HomeView mainMenu;
 
   void spawnComponent() {
-    // Add to components
-    if (bgSprite == null) {
-      bgSprite = Backyard(this);
-      components.add(bgSprite);
-    }
+    if (activeView == View.home) {
+      // Main Menu
+      if (mainMenu == null) {
+        mainMenu = HomeView(this);
+        components.add(mainMenu);
+      }
+    } else {
+      // Add to components
+      if (bgSprite == null) {
+        bgSprite = Backyard(this);
+        components.add(bgSprite);
+      }
 
-    components.add(randomFly());
+      components.add(randomFly());
+    }
   }
 
   Fly randomFly() {
@@ -44,6 +56,11 @@ class FlyGame extends FlameGame {
         print("house");
         return HouseFly(this, Rect.fromLTWH(x, y, tileSize, tileSize));
     }
+  }
+
+  @override
+  void render(Canvas canvas) {
+    super.render(canvas);
   }
 
   void update(double t) {
